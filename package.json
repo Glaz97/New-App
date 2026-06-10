@@ -1,0 +1,9 @@
+{
+  "name": "basic-javascript-challenge",
+  "version": "1.0.0",
+  "private": true,
+  "description": "30-minute JavaScript coding challenge for candidates",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
