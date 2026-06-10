@@ -12,7 +12,33 @@
  * @returns {number}
  */
 function calculateOrderTotal(items, taxRate) {
-  throw new Error('Not implemented');
+  let itemsIsArray = Array.isArray(items);
+  if (!itemsIsArray) {
+    return 0;
+  }
+
+  let total = 0;
+
+  for (let item of items) {
+    let isValid = isValidItem(item);
+    if (isValid) {
+      total += item.price * item.quantity;
+    }
+  }
+
+  total += total * taxRate;
+  
+  return parseFloat(total.toFixed(2));
+}
+
+function isValidItem(item) {
+  return (
+    item &&
+    typeof item.price === 'number' &&
+    item.price > 0 &&
+    Number.isInteger(item.quantity) &&
+    item.quantity >= 1
+  );
 }
 
 module.exports = { calculateOrderTotal };
