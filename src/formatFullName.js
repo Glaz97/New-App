@@ -10,7 +10,16 @@
  * @returns {string}
  */
 function formatFullName(firstName, lastName) {
-  throw new Error('Not implemented');
+  // trim to handle null/undefined safely
+  const first = (firstName ?? '').trim();
+  const last = (lastName ?? '').trim();
+
+  // values are not empty after trimming
+  if (!first || !last) {
+    return '';
+  }
+
+  return `${last}, ${first}`;
 }
 
 module.exports = { formatFullName };
